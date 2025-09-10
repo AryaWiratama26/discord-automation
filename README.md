@@ -22,3 +22,4 @@ bot_automation.choose_server_and_send_message("kicaw", "indo")
 
 
 [Source Code](/automation/bot.py)
+[Env Example](.env.example)
