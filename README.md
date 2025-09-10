@@ -29,6 +29,14 @@ Parameter:
 
 bot_automation.choose_server_and_send_message(server="testing", channel="test", data_message=data)
 
+"""
+Parameter:
+ - server : Name of Server
+ - voice_name : Name of voice chat
+"""
+bot_automation.voice_chat(server="testing", voice_name="MajuTakGentarMembelaYangBenar")
+
+
 ```
 
 
