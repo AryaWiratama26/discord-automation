@@ -34,6 +34,7 @@ Parameter:
  - server : Name of Server
  - voice_name : Name of voice chat
 """
+
 bot_automation.voice_chat(server="testing", voice_name="MajuTakGentarMembelaYangBenar")
 
 
@@ -41,4 +42,5 @@ bot_automation.voice_chat(server="testing", voice_name="MajuTakGentarMembelaYang
 
 
 [Source Code](/automation/bot.py) </br>
-[Env Example](.env.example)
+[Env Example](.env.example) </br>
+[Demo Video](https://youtu.be/N1kN4YcgRMw)
