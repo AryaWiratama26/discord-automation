@@ -19,6 +19,14 @@ data = ["Good Morning", "Guten Morgen", "Goedemorgen"]
 # Jalankeun
 bot_automation = DiscordAutomation(URL_LOGIN, EMAIL_AKUN, PASSWORD_AKUN)
 bot_automation.login()
+
+"""
+Parameter:
+ - server : Name of Server
+ - channel : Name of Channel
+ - data_message : List of message
+"""
+
 bot_automation.choose_server_and_send_message(server="testing", channel="test", data_message=data)
 
 ```
