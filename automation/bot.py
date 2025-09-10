@@ -86,6 +86,27 @@ class DiscordAutomation:
             print("Berhasil")
         except Exception as e:
             print(f"error choose server and send message {e}")
+            
+    def voice_chat(self, server, voice_name="General"):
+        
+        try:
+            button_choose_server = WebDriverWait(DRIVER,20).until(
+                EC.element_to_be_clickable((By.CSS_SELECTOR, "div[data-dnd-name='{}']".format(server)))
+            )
+
+            button_choose_server.click()
+            
+            button_voice_chat = WebDriverWait(DRIVER, 15).until(
+                EC.element_to_be_clickable((By.CSS_SELECTOR, "a[aria-label^='{} (voice channel)']".format(voice_name)))
+            )
+            
+            button_voice_chat.click()
+
+            time.sleep(5)
+
+            print("Berhasil ges")
+        except Exception as e:
+            print(f"error voice chat {e}")
         
 
         
