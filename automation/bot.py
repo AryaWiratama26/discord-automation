@@ -4,6 +4,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
+from typing import List
 import time
 
 CHROME_DRIVER_PATH = "/usr/local/bin/chromedriver"
@@ -51,7 +52,7 @@ class DiscordAutomation:
             print(f"Error Login {e}")
             DRIVER.close()
             
-    def choose_server_and_send_message(self, server, channel):
+    def choose_server_and_send_message(self, server, channel, data_message: List[str]):
         
         try:
             button_choose_server = WebDriverWait(DRIVER,20).until(
@@ -71,10 +72,14 @@ class DiscordAutomation:
             message_box = WebDriverWait(DRIVER,20).until(
                 EC.element_to_be_clickable((By.CSS_SELECTOR, "div[aria-label='Message #{}'][contenteditable='true']".format(channel)))
             )
-        
-            for i in range(5):
-                message_box.send_keys("HELLO its meee")
+            
+            if len(data_message) == 1:
+                message_box.send_keys(data_message[0])
                 message_box.send_keys(Keys.ENTER)
+            elif len(data_message) > 1:
+                for i in data_message:
+                    message_box.send_keys(i)
+                    message_box.send_keys(Keys.ENTER)
             
             time.sleep(5)
             
