@@ -2,7 +2,6 @@ from dotenv import load_dotenv
 import os
 from automation import DiscordAutomation
 
-
 # Load from .env
 load_dotenv()
 EMAIL_AKUN = os.getenv('EMAIL_AKUN')
