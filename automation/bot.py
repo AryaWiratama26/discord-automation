@@ -4,7 +4,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
-from typing import List
+from typing import List, Literal
 import time
 
 CHROME_DRIVER_PATH = "/usr/local/bin/chromedriver"
@@ -15,6 +15,12 @@ OP = webdriver.ChromeOptions()
 service = Service(executable_path=CHROME_DRIVER_PATH)
 
 DRIVER = webdriver.Chrome(service=service, options=OP)
+
+
+TEMPLATE_CREATE_SERVER = Literal['create_my_own', 'friends', 'gaming', 'study_group', 'school_grup']
+SECOND_OP_CREATE_SERVER = Literal['for_a_club_or_community', 'for_me_and_friend']
+
+
 
 class DiscordAutomation:
     def __init__(self, url_login, email, password):
@@ -137,6 +143,62 @@ class DiscordAutomation:
         except Exception as e:
             
             print(f"error friend chat {e}")
+            
+            
+    def create_server(self, templates: TEMPLATE_CREATE_SERVER, sec_op: SECOND_OP_CREATE_SERVER, server_name):
+        try:
+            button_add_server = WebDriverWait(DRIVER, 15).until(
+                EC.element_to_be_clickable((By.CSS_SELECTOR, "div[aria-label='Add a Server']"))
+            )
+            
+            button_add_server.click()
+            
+            op_dics = {
+                "create_my_own" : "img[src='/assets/b30f13ee315c2568.svg']",
+                "friends" : "img[src='/assets/d804200b134c9327.svg']",
+                "gaming" : "img[src='/assets/261f952bf028fa34.svg']",
+                "study_group" : "img[src='/assets/4900b53e7b34c3a5.svg']",
+                "school_club" : "img[src='/assets/2f1587b0c86b42e2.svg']",
+                
+            }
+            
+            sec_op_dics = {
+                "for_a_club_or_community": "img[src='/assets/2f0ebe181e1cce00.svg']",
+                "for_me_and_friend": "img[src='/assets/7f384b2c31f586cd.svg']",
+            }
+            
+            template_server = WebDriverWait(DRIVER, 15).until(
+                EC.element_to_be_clickable((By.CSS_SELECTOR, f"{op_dics[templates]}"))
+            )
+            
+            template_server.click()
+            
+            
+            second_op = WebDriverWait(DRIVER, 15).until(
+                EC.element_to_be_clickable((By.CSS_SELECTOR, f"{sec_op_dics[sec_op]}"))
+            )
+            
+            second_op.click()
+            
+            enter_server_name = WebDriverWait(DRIVER, 15).until(
+                EC.presence_of_element_located((By.CSS_SELECTOR, "input[class='input__0f084']"))
+            )
+            
+            
+
+            enter_server_name.send_keys(Keys.CONTROL, "a")
+            enter_server_name.send_keys(Keys.DELETE)
+            enter_server_name.send_keys(server_name)
+            enter_server_name.send_keys(Keys.ENTER)
+            
+            time.sleep(5)
+            
+            print("Berhasil")
+            
+            
+        
+        except Exception as e:
+            print(f"error create server {e}")
         
 
         
