@@ -38,6 +38,14 @@ Parameter:
 bot_automation.voice_chat(server="testing", voice_name="MajuTakGentarMembelaYangBenar")
 
 
+"""
+Parameter:
+ - data_message = List of Message
+ - friend_name = Name of Friend
+"""
+
+bot_automation.friend_chat(data_message=["Hello Otong", "Apa Kabar?", "Semoga baik ya"], friend_name="otong_bulog")
+
 ```
 
 
