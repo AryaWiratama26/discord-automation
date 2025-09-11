@@ -14,5 +14,7 @@ data = ["Good Morning", "Guten Morgen", "Goedemorgen"]
 # Jalankeun
 bot_automation = DiscordAutomation(URL_LOGIN, EMAIL_AKUN, PASSWORD_AKUN)
 bot_automation.login()
-bot_automation.choose_server_and_send_message(server="testing", channel="test", data_message=data)
-bot_automation.voice_chat(server="testing", voice_name="MajuTakGentarMembelaYangBenar")
+# bot_automation.choose_server_and_send_message(server="testing", channel="test", data_message=data)
+# bot_automation.voice_chat(server="testing", voice_name="MajuTakGentarMembelaYangBenar")
+bot_automation.friend_chat(data_message=["Hello Otong", "Apa Kabar?", "Semoga baik ya"], friend_name="otong_bulog")
+

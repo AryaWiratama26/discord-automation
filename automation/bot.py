@@ -52,7 +52,7 @@ class DiscordAutomation:
             print(f"Error Login {e}")
             DRIVER.close()
             
-    def choose_server_and_send_message(self, server, channel, data_message: List[str]):
+    def choose_server_and_send_message(self, server: str, channel: str, data_message: List[str]):
         
         try:
             button_choose_server = WebDriverWait(DRIVER,20).until(
@@ -87,7 +87,7 @@ class DiscordAutomation:
         except Exception as e:
             print(f"error choose server and send message {e}")
             
-    def voice_chat(self, server, voice_name="General"):
+    def voice_chat(self, server: str, voice_name: str ="General"):
         
         try:
             button_choose_server = WebDriverWait(DRIVER,20).until(
@@ -107,6 +107,36 @@ class DiscordAutomation:
             print("Berhasil ges")
         except Exception as e:
             print(f"error voice chat {e}")
+            
+    def friend_chat(self, data_message: List[str], friend_name: str):
+        
+        try:
+            select_friend = WebDriverWait(DRIVER, 15).until(
+                EC.element_to_be_clickable((By.CSS_SELECTOR, "a[aria-label='{} (direct message)']".format(friend_name)))
+            )
+
+            select_friend.click()
+            
+            
+            message = WebDriverWait(DRIVER, 15).until(
+                EC.presence_of_element_located((By.CSS_SELECTOR, "div[aria-label='Message @{}']".format(friend_name)))
+            )
+            
+            if len(data_message) == 1:    
+                message.send_keys(data_message[0])
+                message.send_keys(Keys.ENTER)
+            elif len(data_message) > 1:
+                for i in data_message:
+                    message.send_keys(i)
+                    message.send_keys(Keys.ENTER)
+
+
+            time.sleep(5)
+            print("Mantap")
+            
+        except Exception as e:
+            
+            print(f"error friend chat {e}")
         
 
         
