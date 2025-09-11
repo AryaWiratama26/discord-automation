@@ -50,6 +50,7 @@ bot_automation.friend_chat(data_message=["Hello Otong", "Apa Kabar?", "Semoga ba
 Parameter:
  - templates = Choose the template you want : ['create_my_own', 'friends', 'gaming', 'study_group', 'school_grup']
  - sec_op = More about the server : ['for_a_club_or_community', 'for_me_and_friend']
+ - server_name = Name of Server
 """
 
 bot_automation.create_server(templates="create_my_own", sec_op="for_me_and_friend", server_name="TESTING15")
