@@ -55,6 +55,13 @@ Parameter:
 
 bot_automation.create_server(templates="create_my_own", sec_op="for_me_and_friend", server_name="TESTING15")
 
+"""
+Parameter:
+ - link_invite = Invitation Link
+"""
+
+bot_automation.join_server(link_invite="https://discord.gg/WmYDsXzubX")
+
 ```
 
 
