@@ -199,6 +199,34 @@ class DiscordAutomation:
         
         except Exception as e:
             print(f"error create server {e}")
+            
+    def join_server(self, link_invite):
         
+        try:
+            
+            button_add_server = WebDriverWait(DRIVER, 15).until(
+                EC.element_to_be_clickable((By.CSS_SELECTOR, "div[aria-label='Add a Server']"))
+            )
+            
+            button_add_server.click()
+            
+            button_join_server = WebDriverWait(DRIVER, 15).until(
+                EC.element_to_be_clickable((By.CSS_SELECTOR, "div[class='buttonChildren__6af3a']"))
+            )
+            
+            button_join_server.click()
+            
+            enter_link_invite = WebDriverWait(DRIVER, 15).until(
+                EC.presence_of_element_located((By.CSS_SELECTOR, "input[class='input__0f084'][placeholder='https://discord.gg/hTKzmak']"))
+            )
+            
+            enter_link_invite.send_keys(link_invite)
+            enter_link_invite.send_keys(Keys.ENTER)            
+            
 
+            time.sleep(5)
+
+            
+        except Exception as e:
+            print(f"error join server {e}")
         
