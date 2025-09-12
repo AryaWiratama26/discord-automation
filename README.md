@@ -67,4 +67,4 @@ bot_automation.join_server(link_invite="https://discord.gg/WmYDsXzubX")
 
 [Source Code](/automation/bot.py) </br>
 [Env Example](.env.example) </br>
-[Demo Video](https://youtu.be/N1kN4YcgRMw)
+[Demo Video](https://youtu.be/-Z3PfUCn4yI)
