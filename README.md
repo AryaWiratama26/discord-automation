@@ -1,5 +1,7 @@
 # discord-automation
 
+This project was created for learning automation using selenium.
+
 
 ```python
 
